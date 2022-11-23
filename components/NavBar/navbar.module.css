@@ -1,0 +1,67 @@
+
+.navbar{
+    background-color: var(--backgroundElevated);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    padding: 8px 18px;
+    opacity: 1;
+}
+
+.appname{
+    display: flex;
+    align-items: center;
+    margin-left: 250px;
+}
+
+.appname span{
+    margin-left: 10px;
+}
+
+.searchbar{
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    margin-right: 36px;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.searchbar span{
+    margin-left: 16px;
+    margin-right: 8px;
+    width: 150px;
+}
+
+.searchIcon, .menuIcon , .appIcon{
+    width: 20px;
+    height: auto;
+}
+
+@media only screen and (max-width:1000px){
+    .appname{
+        margin-left: 100px;
+    }
+}
+
+@media only screen and (max-width:700px){
+    .appname{
+        margin-left: 50px;
+    }
+    .searchbar{
+        margin: 0px;
+    }
+    .searchbar span{
+        display: none;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .appname{
+        margin-left: 0px;
+    }
+}

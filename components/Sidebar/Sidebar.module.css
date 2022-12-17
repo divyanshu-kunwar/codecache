@@ -1,0 +1,22 @@
+
+.sidebar{
+    width: 250px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 46px 40px 40px 44px;
+    background-color: var(--backgroundElevated);
+    border: 1px solid red;
+}
+
+.themeContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 4px;
+}
+
+.navLink{
+    margin-top: 32px;
+}

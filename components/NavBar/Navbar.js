@@ -36,16 +36,14 @@ export default function NavBar(props) {
 
   return (
     <div className={style.navbar}>
+      
       <Image src={menuIcon} alt="menu" className={style.menuIcon} 
-        onClick={()=>{
-          if(props.theme === "light"){
-            sessionStorage.setItem("theme" , "dark");
-            props.setTheme("dark");
-          }else{
-            sessionStorage.setItem("theme" , "light");
-            props.setTheme("light");
-          }
-        }}/>
+        onClick={
+          ()=>{
+            props.setSideExpanded(!props.sideExpanded)
+        }
+        }/>
+
       <div className={style.appname}>
         <Image src={appLogo} alt="menu" className={style.appIcon} />
         <span>CodeCache</span>

@@ -19,9 +19,11 @@ a {
     --background:#111111;
     --backgroundElevated:#181818;
 }
+
 html {
     color-scheme: dark;
 }
+
 body {
     color: white;
     background: var(--background);

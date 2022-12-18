@@ -7,9 +7,38 @@ import bg from "../media/Home.jpg";
 
 import styles from "../styles/dashboard.module.css";
 
-export default function Home() {
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { page: ''} }, 
+    { params: { page: 'home'} }, 
+    { params: { page: 'browse' } }, 
+    { params: { page: 'notification'  } },
+    { params: { page: 'buymeacoffee' } }],
+    fallback: false,     // can also be true or 'blocking'
+  }
+}
+
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps(context) {
+  const data = {
+    '':'home',
+    'home':'Home - Code Cache',
+    'browse':'Browse By Tags - Code Cache',
+    'notification':'Notification - Code Cache',
+    'buymeacoffee': 'Buy me a Coffee - Code Cache',
+  }
+  return {
+    // Passed to the page component as props
+    // props: { title: title },
+    props:{title : data[context.params.page]}
+  }
+}
+
+export default function Home(props) {
   const [theme, setTheme] = useState("dark");
   const [sideExpanded, setSideExpanded] = useState(false);
+  const [selectedTab , setSelectedTab] = useState(0);
 
   useEffect(() => {
     if (sessionStorage.getItem("theme") === "light") {
@@ -23,7 +52,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Code Cache</title>
+        <title>{props.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="some description here" />
         <link

@@ -1,11 +1,14 @@
-import NavBar from "../components/NavBar/Navbar";
-import Head from "next/head";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import Sidebar from "../components/Sidebar/Sidebar";
-import bg from "../media/Home.jpg";
+import NavBar from "../components/NavBar/Navbar"
+import Head from "next/head"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import Sidebar from "../components/Sidebar/Sidebar"
+import buycofeicon from '../media/icons/buycofe.png'
+import bg from "../media/Home.jpg"
 
-import styles from "../styles/dashboard.module.css";
+import DashHome from "../components/Home/DashHome"
+
+import styles from "../styles/dashboard.module.css"
 
 
 export async function getStaticPaths() {
@@ -85,9 +88,7 @@ export default function Home(props) {
           <div className={styles.sideBarWithMain} >
             <Sidebar theme={theme} setTheme={setTheme} 
             sideExpanded={sideExpanded}/>
-            <div className={styles.mainArea}>
-              
-            </div>
+            <DashHome theme={theme}/>
           </div>
         </div>
       </main>

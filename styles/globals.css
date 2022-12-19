@@ -18,6 +18,9 @@ a {
 :root{
     --background:#111111;
     --backgroundElevated:#181818;
+    --linear-primary: linear-gradient(180deg, #705FD5 0%, #38B6B6 100%);
+    --linear-primary-text: linear-gradient(90deg, #705FD5 0%, #38B6B6 100%);
+    --linear-primary-color: #38B6B6;
 }
 
 html {

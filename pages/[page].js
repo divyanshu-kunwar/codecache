@@ -13,8 +13,7 @@ import styles from "../styles/dashboard.module.css"
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { page: ''} }, 
-    { params: { page: 'home'} }, 
+    paths: [{ params: { page: 'home'} }, 
     { params: { page: 'browse' } }, 
     { params: { page: 'notification'  } },
     { params: { page: 'buymeacoffee' } }],

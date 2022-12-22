@@ -1,0 +1,34 @@
+.ShortsVideo{
+    width: 100%;
+}
+
+.horizontalGallery{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 100px;
+    height: calc(100% - 200px);
+}
+
+.shortsCard{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border:1px solid var(--backgroundElevated);
+}
+
+.shortsCard:hover{
+    background-color: var(--backgroundElevated);
+}
+
+.shortsCardImg{
+    width: 227px;
+    height: 400px;
+    background-color: yellow;
+    border-radius: 8px;
+}
+
+.shortsCardText{
+    margin: 12px;
+    font-size: large;
+}

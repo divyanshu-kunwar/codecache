@@ -2,12 +2,11 @@ import NavBar from "../components/NavBar/Navbar"
 import Head from "next/head"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import supabase from "../utils/supabase"
+
 import Sidebar from "../components/Sidebar/Sidebar"
-import buycofeicon from '../media/icons/buycofe.png'
 import bg from "../media/Home.jpg"
-
 import DashHome from "../components/Home/DashHome"
-
 import styles from "../styles/dashboard.module.css"
 
 
@@ -23,18 +22,40 @@ export async function getStaticPaths() {
 
 // `getStaticPaths` requires using `getStaticProps`
 export async function getStaticProps(context) {
-  const data = {
+
+  const { data, error } = await supabase.from("Dashboard Data").select("*");
+
+  const titledata = {
     '':'home',
     'home':'Home - Code Cache',
     'browse':'Browse By Tags - Code Cache',
     'notification':'Notification - Code Cache',
     'buymeacoffee': 'Buy me a Coffee - Code Cache',
   }
+
+  // homepagedata | browsepagedata | buymeacoffeedata
+
+  let seriesData = []
+  let videosData = []
+  let shortsData = []
+
+  data.forEach((elem)=>{
+    if(elem.Type == 0){
+      seriesData.push(elem)
+    }else if(elem.Type == 1){
+      videosData.push(elem)
+    }else{
+      shortsData.push(elem)
+    }
+  })
+
   return {
-    // Passed to the page component as props
-    // props: { title: title },
-    props:{title : data[context.params.page]}
+    props:{title : titledata[context.params.page] , 
+      seriesData: seriesData ,
+       videosData:videosData ,
+       shortsData:shortsData}
   }
+
 }
 
 export default function Home(props) {
@@ -87,7 +108,13 @@ export default function Home(props) {
           <div className={styles.sideBarWithMain} >
             <Sidebar theme={theme} setTheme={setTheme} 
             sideExpanded={sideExpanded}/>
-            <DashHome theme={theme}/>
+
+            <DashHome theme={theme} 
+            seriesData = {props.seriesData}
+            videosData = {props.videosData}
+            shortsData = {props.shortsData}
+            />
+
           </div>
         </div>
       </main>

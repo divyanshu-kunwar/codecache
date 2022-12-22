@@ -9,6 +9,14 @@ const nextConfig = {
     ]
   },
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'static-cse.canva.com'
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig

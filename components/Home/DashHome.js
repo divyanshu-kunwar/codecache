@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import VideoContainer from "./VideoContainer/VideoContainer";
 
-import DSAVisualImg from "../../media/tools/DSAVisuals.png";
+import DSAVisualImg from "../../media/tools/DSAvisuals.png";
 
 
 

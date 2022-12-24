@@ -4,6 +4,8 @@ import Image from "next/image";
 
 import VideoContainer from "./VideoContainer/VideoContainer";
 
+import DSAVisualImg from "../../media/tools/DSAVisuals.png";
+
 
 
 export default function DashHome(props) {
@@ -12,6 +14,8 @@ export default function DashHome(props) {
     <div className={styles.mainArea}>
       <div></div>
       <Hero />
+
+
 
       <div className={styles.newLearningSeries}>
         <div className={styles.head}>New Learning Series</div>
@@ -27,8 +31,8 @@ export default function DashHome(props) {
                     Image={series.ImgUrl}
                     Title={series.Title}
                     Description={series.Description}
-                    Playtime={'2.5 hrs'}
-                    VideoCount={'45'}
+                    Playtime={series.length}
+                    VideoCount={series.chapters}
                     VideoId={series.VideoId}
                   />
                 )
@@ -37,6 +41,8 @@ export default function DashHome(props) {
         </div>
       </div>
 
+
+      
       <div className={styles.newVideosSection}>
         <div className={styles.head}>New Videos</div>
 
@@ -50,7 +56,7 @@ export default function DashHome(props) {
                     Type="videos"
                     Image={videos.ImgUrl}
                     Title={videos.Title}
-                    Playtime={'2.5 hrs'}
+                    Playtime={videos.length}
                     VideoId={videos.VideoId}
                   />
                 )
@@ -58,6 +64,20 @@ export default function DashHome(props) {
             }
         </div>
       
+      </div>
+
+      <div className={styles.tools}>
+        <div className={styles.head}>Learning Tools</div>
+        <div className={styles.horizontalGallery}>
+          <VideoContainer
+                      theme={props.theme}
+                      Type="tools"
+                      Image={DSAVisualImg}
+                      Title="Data Structure And Algorithm Visualization"
+                      Description="Learn data structures and algorithms with the help of tools powered by P5JS."
+                      ToolHref="https://kunwar-divyanshu.github.io/DSAVisuals/"
+                    />
+      </div>
       </div>
 
       <div className={styles.shortVideosSection}>
@@ -80,6 +100,9 @@ export default function DashHome(props) {
             }
         </div>
       </div>
+
+
+
     </div>
   );
 }

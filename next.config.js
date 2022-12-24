@@ -15,6 +15,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'static-cse.canva.com'
       },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'zdulvlobrojgpadxtajj.supabase.co'
+      },
     ],
   },
 }

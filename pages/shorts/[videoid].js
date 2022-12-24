@@ -9,14 +9,14 @@ import ShortsVideo from "../../components/ShortsVideo/ShortsVideo"
 
 export async function getStaticPaths() {
     return {
-      paths: [{ params: { videoid: 'home'} }],
+      paths: [{ params: { videoId: 'home'} }],
       fallback: 'blocking',     // can also be true or 'blocking'
     }
   }
 
 export async function getStaticProps(context) {
     return {
-        props: { videoid: context.params.videoid },
+        props: { videoid: context.params.videoId },
     };
 }
 

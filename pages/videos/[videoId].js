@@ -2,6 +2,10 @@ import NavBar from "../../components/NavBar/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import styles from '../../styles/dashboard.module.css'
 
+import playerStyle from './videoPlayer.module.css'
+
+import ReactPlayer from "react-player"
+
 import { useEffect, useState } from "react"
 
 import Head from "next/head"
@@ -22,6 +26,13 @@ export async function getStaticProps(context) {
 export default function VideoPage(props) {
   const [theme, setTheme] = useState("dark");
   const [sideExpanded, setSideExpanded] = useState(false);
+  const [hasWindow, setHasWindow] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (sessionStorage.getItem("theme") === "light") {
@@ -58,10 +69,26 @@ export default function VideoPage(props) {
           <div className={styles.sideBarWithMain} >
             <Sidebar theme={theme} setTheme={setTheme} 
             sideExpanded={sideExpanded}/>
+          <div className={playerStyle.youtubeContainer}>
 
-            {/* videos series goes here */}
+            {
+              hasWindow && 
+              <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${props.videoid}`}
+              width="100%"
+              height="100%"
+              controls={true}
+              playing={true}
+              light={true}
+              config={{
+                youtube: {
+                  playerVars: { showinfo: 0 , modestbranding:1 , rel:0 , color:"red"},
+                },
+              }}
+            />
+            }
 
-
+          </div>
           </div>
         </div>
       </main>

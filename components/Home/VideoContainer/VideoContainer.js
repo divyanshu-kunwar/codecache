@@ -22,12 +22,24 @@ export default function VideoContainer(props){
         <div className={props.Type==='shorts' ? styles.imageShortsContainer : styles.imageSeriesContainer}>
             {
             props.Type === 'shorts' && 
+            <Image src={`https://img.youtube.com/vi/${props.VideoId}/hqdefault.jpg`} alt={props.Title + " Thumbnail"} 
+            width='350'
+            height='100'/>
+            }
+                        {
+            (props.Type === 'series') && 
             <Image src={props.Image} alt={props.Title + " Thumbnail"} 
             width='350'
             height='100'/>
             }
             {
-            (props.Type === 'series' || props.Type==='videos' || props.Type=="tools") && 
+            (props.Type==='videos') && 
+            <Image src={`https://img.youtube.com/vi/${props.VideoId}/hqdefault.jpg`} alt={props.Title + " Thumbnail"} 
+            width='350'
+            height='100'/>
+            }
+            {
+            (props.Type=="tools") && 
             <Image src={props.Image} alt={props.Title + " Thumbnail"} 
             width='350'
             height='100'/>

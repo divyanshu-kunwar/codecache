@@ -1,4 +1,4 @@
-export default async function Home(props) {
+export default function Home(props) {
     return(
         <div>ABC</div>
     )

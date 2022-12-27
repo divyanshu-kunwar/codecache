@@ -43,6 +43,7 @@ export async function getStaticProps(context) {
   });
 
   // get all the playlist data from the api
+  // comment for change
   const res =
   await fetch(`https://codecache.vercel.app/api/fetchHomePlaylist?playlistId=${playlistId}&chapterLength=${chapterLength}`);
   const seriesData = await res.json();

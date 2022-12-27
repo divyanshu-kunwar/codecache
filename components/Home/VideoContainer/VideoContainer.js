@@ -3,7 +3,6 @@ import Image from "next/image";
 import styles from './VideoContainer.module.css'
 
 import playtime from "../../../media/icons/playtime.svg";
-import viewsIcon from "../../../media/icons/views.svg";
 
 export default function VideoContainer(props){
 
@@ -47,8 +46,8 @@ export default function VideoContainer(props){
         
         </div>
 
-        <div className={(props.Type==='shorts' || props.Type == "tools")? styles.displayNone : styles.seriesStats}>
-          <div className={styles.playtimeStats}>
+        <div className={(props.Type == "tools")? styles.displayNone : styles.seriesStats}>
+          <div className={props.Type==='shorts'? styles.shortTimeStats:styles.playtimeStats}>
             <Image
               className={props.theme == "dark" && styles.statsIconDark}
               src={playtime}

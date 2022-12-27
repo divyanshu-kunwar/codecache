@@ -3,7 +3,7 @@ import Image from "next/image"
 
 import styles from './hero.module.css'
 
-export default function Hero(){
+export default function Hero(props){
     return(
         <div className={styles.heroAndSupporter}>
                   <div className={styles.hero}>
@@ -17,11 +17,13 @@ export default function Hero(){
                   <div className={styles.supporter}>
                     <div className={styles.supporterThanks}>Thanks To Our Supporters : </div>
                     <div className={styles.supporterNames}>
-                      <span>some name</span>
-                      <span>some name</span>
-                      <span>some name</span>
-                      <span>some name</span>
-                      <span>some name</span>
+                    {
+                      (props.contributors).map((contributor) => {
+                        return(
+                          <span key={contributor}>{contributor}</span>
+                        )
+                      })
+                    }
                     </div>
                     <div className={styles.coffeeimg}>
                       <Image src={buycofeicon} alt="buy me a coffee"/>

@@ -25,9 +25,9 @@ export default function ShortsVideo(props){
             <div className={styles.horizontalGallery}>
 
                 <div className={styles.shortsCard}>
-                    <iframe width="400" height="800" src="https://www.youtube.com/embed/seRovvWLGBo" 
+                    {/* <iframe width="400" height="800" src="https://www.youtube.com/embed/seRovvWLGBo" 
                     title="Divyanshu" 
-                    frameborder="0"></iframe>
+                    frameborder="0"></iframe> */}
                 </div>
 
             </div>

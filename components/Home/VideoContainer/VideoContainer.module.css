@@ -14,14 +14,12 @@
     cursor: pointer;
     background-color: var(--backgroundElevated);
     display: block;
-    opacity: 0.8;
     transition: all 0.5s;
 }
 
 .seriesContainer:hover , .shortsContainer:hover{
     border: 1px solid var(--linear-primary-color);
     scale: 1.02;
-    opacity: 0.9;
 }
 
 .imageShortsContainer{
@@ -50,19 +48,26 @@
     opacity: 1;
 }
 
-.playtimeStats , .viewStats{
+.playtimeStats , .videoStats ,.shortTimeStats{
     display: flex;
     cursor: pointer;
     align-items: center;
 }
 
-.playtimeStats img{
+.playtimeStats img ,.shortTimeStats img{
     width: 14px;
 }
 
-.playtimeStats span , .viewStats span{
+.playtimeStats span , .videoStats span, .shortTimeStats span{
     margin-left: 5px;
     font-size: small;
+}
+
+.shortTimeStats{
+    margin-left: -14px;
+    margin-top: -50px;
+    background-color: var(--backgroundElevated);
+    padding: 4px 8px 8px 5px;
 }
 
 .statsIconDark{

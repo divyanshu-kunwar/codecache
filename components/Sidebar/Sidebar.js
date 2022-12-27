@@ -24,7 +24,9 @@ export default function Sidebar(props){
 
         </div>
         <Link href='/home' className={styles.navLink}><span>Home</span></Link>
-        <Link href='/browse' className={styles.navLink}><span>Browse by Tags</span></Link>
+        <Link href='/Series_list' className={styles.navLink}><span>Explore Playlists</span></Link>
+        <Link href='/Videos_list' className={styles.navLink}><span>Explore Videos</span></Link>
+        <Link href='/Shorts_list' className={styles.navLink}><span>Explore Shorts</span></Link>
         <div className={styles.navLink}><span>Notification</span></div>
         <Link href='https://www.youtube.com/@CodeCache' className={styles.navLink}><span>Youtube Channel</span></Link>
         <Link href='/buymeacoffee' className={styles.navLink}><span>Buy me a coffee</span></Link>

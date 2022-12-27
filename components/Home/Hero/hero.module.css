@@ -4,6 +4,7 @@
 }
 
 .hero{
+    cursor: default;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,6 +37,7 @@
     /* opacity: 0.5; */
 }
 .supporterThanks{
+    cursor: default;
     padding-left: 40px;
 }
 
@@ -50,7 +52,7 @@
     padding-right: 40px;
 }
 .supporterNames span{
-    cursor: pointer;
+    cursor: default;
     margin: 4px;
 }
 

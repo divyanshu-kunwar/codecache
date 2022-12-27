@@ -13,27 +13,27 @@ export default function DashHome(props) {
   return (
     <div className={styles.mainArea}>
       <div></div>
-      <Hero />
-
+      <Hero 
+      contributors={props.contributors}/>
 
 
       <div className={styles.newLearningSeries}>
-        <div className={styles.head}>New Learning Series</div>
+        <div className={styles.head}>New Learning Playlist</div>
 
         <div className={styles.horizontalGallery}>
             {
               (props.seriesData).map((series) => {
                 return(
                   <VideoContainer
-                    key={series.VideoId}
+                    key={series.id}
                     theme={props.theme}
                     Type="series"
-                    Image={series.ImgUrl}
-                    Title={series.Title}
-                    Description={series.Description}
-                    Playtime={series.length}
-                    VideoCount={series.chapters}
-                    VideoId={series.VideoId}
+                    Image={series.thumbnail}
+                    Title={series.title}
+                    Description={series.description}
+                    Playtime={series.chapterLength}
+                    VideoCount={series.noOfVideos}
+                    VideoId={series.id}
                   />
                 )
               })
@@ -41,8 +41,6 @@ export default function DashHome(props) {
         </div>
       </div>
 
-
-      
       <div className={styles.newVideosSection}>
         <div className={styles.head}>New Videos</div>
 
@@ -51,13 +49,13 @@ export default function DashHome(props) {
               (props.videosData).map((videos) => {
                 return(
                   <VideoContainer
-                    key={videos.VideoId}
+                    key={videos.id}
                     theme={props.theme}
                     Type="videos"
-                    Image={videos.ImgUrl}
-                    Title={videos.Title}
-                    Playtime={videos.length}
-                    VideoId={videos.VideoId}
+                    Image={videos.thumbnail}
+                    Title={videos.title}
+                    Playtime={videos.playtime}
+                    VideoId={videos.id}
                   />
                 )
               })
@@ -88,20 +86,19 @@ export default function DashHome(props) {
               (props.shortsData).map((short) => {
                 return(
                   <VideoContainer
-                    key={short.VideoId}
+                    key={short.id}
                     theme={props.theme}
                     Type="shorts"
-                    Image={short.ImgUrl}
-                    Title={short.Title}
-                    VideoId={short.VideoId}
+                    Image={short.thumbnail}
+                    Title={short.title}
+                    VideoId={short.id}
+                    Playtime={short.playtime}
                   />
                 )
               })
             }
         </div>
       </div>
-
-
 
     </div>
   );

@@ -1,25 +1,55 @@
 import NavBar from "../../components/NavBar/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import styles from '../../styles/dashboard.module.css'
-
 import playerStyle from './videoPlayer.module.css'
 
 import ReactPlayer from "react-player"
+import supabase from "../../utils/supabase"
 
 import { useEffect, useState } from "react"
 
 import Head from "next/head"
 
 export async function getStaticPaths() {
+
+  // get data from supabase database named : videosList and get the id of all the videos
+  const { data, error } = await supabase.from("VideosList").select("videoId")
+  // console.log("datahere" , data , error)
+  //convert this data into the format required by nextjs
+  
+  const paths = data.map((item) => {
     return {
-      paths: [{ params: { videoId: 'home'} }],
-      fallback: 'blocking',     // can also be true or 'blocking'
+      params: { videoId: item.videoId},
+    }
+  })
+
+    return {
+        paths,
+      fallback: "blocking",     // can also be true or 'blocking'
     }
   }
 
 export async function getStaticProps(context) {
+
+    console.log("context" , context.params.videoId)
+
+    // get the data from supabase
+    const { data, error } = await supabase.from("VideosList").select("*").eq("videoId" , context.params.videoId)
+    console.log("datahere" , data )
+
+    // if data is empty or error is not null then return 404
+    if(data.length === 0 || error !== null){
+      return {
+        notFound: true,
+      }
+    }
+
     return {
-        props: { videoid: context.params.videoId },
+        props: { 
+          videoid: context.params.videoId,
+          data : data
+        },
+        revalidate: 30,
     };
 }
 

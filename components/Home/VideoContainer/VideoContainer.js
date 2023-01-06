@@ -35,6 +35,7 @@ export default function VideoContainer(props) {
             alt={props.Title + " Thumbnail"}
             width="350"
             height="100"
+            className={styles.thumbnail}
           />
         )}
         {props.Type === "series" && (
@@ -43,6 +44,7 @@ export default function VideoContainer(props) {
             alt={props.Title + " Thumbnail"}
             width="350"
             height="100"
+            className={styles.thumbnail}
           />
         )}
         {props.Type === "videos" && (
@@ -51,6 +53,7 @@ export default function VideoContainer(props) {
             alt={props.Title + " Thumbnail"}
             width="350"
             height="100"
+            className={styles.thumbnail}
           />
         )}
         {props.Type == "tools" && (
@@ -59,6 +62,7 @@ export default function VideoContainer(props) {
             alt={props.Title + " Thumbnail"}
             width="350"
             height="100"
+            className={styles.thumbnail}
           />
         )}
       </div>

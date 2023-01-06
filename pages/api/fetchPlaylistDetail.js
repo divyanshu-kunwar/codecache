@@ -17,6 +17,8 @@ export default async function youtubePlaylist(req, res){
         videos: [],
         nextToken: data.nextPageToken
     }
+
+
     // make a single request to get all detail of all the videos in playlist
     // time for each video is in ISO 8601 format PT1M33S
     const videoIds = []

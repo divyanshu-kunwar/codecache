@@ -11,20 +11,56 @@ import VideoContainer from "../../components/Home/VideoContainer/VideoContainer"
 import Image from "next/image";
 import playtime from "../../media/icons/playtime.svg";
 
+import supabase from "../../utils/supabase";
+
 export async function getStaticPaths() {
-  
-  // get 
+  const { data, error } = await supabase.from("SeriesList").select("seriesId");
+
+  const paths = data.map((item) => {
+    return {
+      params: { seriesId: item.seriesId },
+    };
+  });
 
   return {
-    paths: [{ params: { videoId: "home" } }],
+    paths,
     fallback: "blocking", // can also be true or 'blocking'
   };
 }
 
 export async function getStaticProps(context) {
+
+  const res = await fetch(`https://codecache.vercel.app/api/fetchPlaylistDetail?playlistId=${context.params.seriesId}`);
+  const res2 = await fetch(`https://codecache.vercel.app/api/fetchHomePlaylist?playlistId=${context.params.seriesId}&chapterLength=12`);
+
+  const data = await res.json();
+  const data2 = await res2.json();
+
+
+
+  const { data:seriesData, error } = await supabase
+  .from("SeriesList")
+  .select("*")
+  .eq("seriesId", context.params.seriesId);
+
+  if (seriesData.length === 0 || error !== null) {
+    return {
+      notFound: true,
+    };
+  }
+
+
+
   return {
-    props: { videoid: context.params.videoId },
-  };
+    props: {
+      seriesId: context.params.seriesId,
+      playlist: data,
+      series: data2[0],
+    },
+}
+
+
+
 }
 
 export default function SeriesPage(props) {
@@ -43,9 +79,9 @@ export default function SeriesPage(props) {
   return (
     <div>
       <Head>
-        <title>{props.videoid}</title>
+        <title>{props.series.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="some description here" />
+        <meta name="description" content={props.series.description} />
         <link
           rel="icon"
           href="/favicon_light.png"
@@ -72,110 +108,73 @@ export default function SeriesPage(props) {
 
             {/* videos series goes here */}
 
+            { console.log(props.series)}
+
             <div className={styles_.main}>
-              <h2>Series Name</h2>
+              <h2>{props.series.title}</h2>
               <div className={styles_.main2}>
                 <div className={styles_.seriesInfo}>
                   <div className={styles_.seriesInfo__left}>
                     <Image
-                      src="https://i.ytimg.com/vi/2-Ayb4GGwbY/maxresdefault.jpg"
-                      alt=""
+                      src={props.series.thumbnail}
+                      alt={props.series.title}
                       width="320"
                       height="180"
                     />
 
                     <div className={styles_.stats}>
-
                       <div>
                         <Image
-                        className={theme == "dark" && styles_.statsIconDark}
-                        src={playtime}
-                        alt="playtime"
-                      />
+                          className={theme == "dark" && styles_.statsIconDark}
+                          src={playtime}
+                          alt="playtime"
+                        />
                         {/* format integer time in required format */}
                         <span>
-                          {props.Playtime < 60
-                            ? props.Playtime + "sec"
-                            : props.Playtime < 3600
-                            ? Math.floor(props.Playtime / 60) +
+                          {props.playlist.totalPlaytime < 60
+                            ? props.playlist.totalPlaytime + "sec"
+                            : props.playlist.totalPlaytime < 3600
+                            ? Math.floor(props.playlist.totalPlaytime / 60) +
                               "m " +
-                              (props.Playtime % 60) +
+                              (props.playlist.totalPlaytime % 60) +
                               "s"
-                            : Math.floor(props.Playtime / 3600) +
+                            : Math.floor(props.playlist.totalPlaytime / 3600) +
                               "h " +
-                              Math.floor((props.Playtime % 3600) / 60) +
+                              Math.floor((props.playlist.totalPlaytime % 3600) / 60) +
                               "m"}
                         </span>
                       </div>
 
                       <div className={styles.viewStats}>
-                        <span>{props.VideoCount} Chapters</span>
+                        <span>{props.playlist.totalVideos} Chapters</span>
                       </div>
                     </div>
 
                     <h3>About This Series</h3>
                     <p>
-                      Amet minim mollit non deserunt ullamco est sit aliqua
-                      dolor do amet sint. Velit officia consequat duis enim
-                      velit mollit. Exercitation veniam consequat sunt nostrud
-                      amet.
+                      {props.series.description}
                     </p>
 
                     <div className={styles_.codeBtn}>
                       <span>Get {"<CODE/>"}</span>
+                      {/* TODO */}
                     </div>
                   </div>
                 </div>
                 <div className={styles_.videoGrid}>
-                  <VideoContainer
-                    theme={theme}
-                    Type="videos"
-                    VideoId="2-Ayb4GGwbY"
-                    Title="How to use the console in Chrome"
-                    Playtime={40}
-                  />
-                  <VideoContainer
-                    theme={theme}
-                    Type="videos"
-                    VideoId="2-Ayb4GGwbY"
-                    Title="How to use the console in Chrome"
-                    Playtime={40}
-                  />
-                  {/* <VideoContainer
-                    theme={theme}
-                    Type="videos"
-                    VideoId="2-Ayb4GGwbY"
-                    Title="How to use the console in Chrome"
-                    Playtime={40}
-                  />
-                  <VideoContainer
-                    theme={theme}
-                    Type="videos"
-                    VideoId="2-Ayb4GGwbY"
-                    Title="How to use the console in Chrome"
-                    Playtime={40}
-                  />
-                  <VideoContainer
-                    theme={theme}
-                    Type="videos"
-                    VideoId="2-Ayb4GGwbY"
-                    Title="How to use the console in Chrome"
-                    Playtime={40}
-                  />
-                  <VideoContainer
-                    theme={theme}
-                    Type="videos"
-                    VideoId="2-Ayb4GGwbY"
-                    Title="How to use the console in Chrome"
-                    Playtime={40}
-                  />
-                  <VideoContainer
-                    theme={theme}
-                    Type="videos"
-                    VideoId="2-Ayb4GGwbY"
-                    Title="How to use the console in Chrome"
-                    Playtime={40}
-                  /> */}
+
+                  {props.playlist.videos.map((video) => {
+                    return (
+                      <VideoContainer
+                        key={video.id}
+                        theme={theme}
+                        Type="videos"
+                        VideoId={video.id}
+                        Title={video.title}
+                        Playtime={video.playtime}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>

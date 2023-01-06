@@ -2,38 +2,28 @@ import NavBar from "../../components/NavBar/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import styles from '../../styles/dashboard.module.css'
 
-import playerStyles from '../videos/videoPlayer.module.css'
-
 import { useEffect, useState } from "react"
 
 import Head from "next/head"
-import ShortsVideo from "../../components/ShortsVideo/ShortsVideo"
-import ReactPlayer from "react-player"
 
 export async function getStaticPaths() {
     return {
-      paths: [{ params: { videoid: 'home'} }],
+      paths: [{ params: { videoId: 'home'} }],
       fallback: 'blocking',     // can also be true or 'blocking'
     }
   }
 
 export async function getStaticProps(context) {
     return {
-        props: { videoid: context.params.videoid },
+        props: { videoid: context.params.videoId },
     };
 }
 
-export default function ShortsPage(props) {
+export default function SeriesPage(props) {
   const [theme, setTheme] = useState("dark");
   const [sideExpanded, setSideExpanded] = useState(false);
 
-  const [hasWindow, setHasWindow] = useState(false);
-
-
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setHasWindow(true);
-    }
     if (sessionStorage.getItem("theme") === "light") {
       setTheme("light");
     } else {
@@ -69,30 +59,8 @@ export default function ShortsPage(props) {
             <Sidebar theme={theme} setTheme={setTheme} 
             sideExpanded={sideExpanded}/>
 
-<div className={playerStyles.shortContainer}>
-            {/* shorts goes here */}
-            {hasWindow && (
-            <ReactPlayer 
-            className={playerStyles.shortVideoPlayer}
-            url={`https://www.youtube.com/shorts/${props.videoid}`}
-            controls={true}
-            playing={true}
-            light={true || props.videoData.thumbnail}
-            width="100%"
-            height="100%"
-            config={{
-              youtube: {
-                playerVars: {
-                  showinfo: 0,
-                  modestbranding: 1,
-                  rel: 0,
-                  color: "red",
-                },
-              },
-            }}
-            />
-            )}
-</div>
+            {/* videos series goes here */}
+
 
           </div>
         </div>

@@ -1,7 +1,152 @@
-.youtubeContainer{
+.reactPlayerContainer{
+    margin-top: 20px;
     aspect-ratio: 16/9;
+    display: block;
     max-width: 100%;
-    height: 70%;
-    margin: 20px auto;
-    background-color: black;
+    height: min(56.25vw , 45vh);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mainContainer{
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+}
+
+.youtubeContainer{
+    display:flex;
+    flex-direction: column;
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0 auto auto auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content_detail{
+    aspect-ratio: 16/9;
+    display: flex;
+    max-width: 100%;
+    height: 80vh;
+    border-radius: 8px;
+    overflow-y: auto;
+    background-color: var(--backgroundElevated);
+    margin: 30px 0px 10px 0px;
+}
+
+/* thin content detail scroll bar in all browser */
+.content_detail::-webkit-scrollbar {
+    width: 5px;
+}
+
+.content_detail::-webkit-scrollbar-track {
+    background: var(--backgroundElevated);
+    border-radius: 4px;
+}
+
+.content_detail::-webkit-scrollbar-thumb {
+    background: var(--linear-primary-text);
+}
+
+.content_detail_2{
+    width: 100%;
+    margin: 20px 40px;
+}
+
+.codeBtn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 20px 10px 30px;
+    border-radius: 8px;
+    background: var(--buttonBackground);
+    color: var(--background);
+    font-weight: bold;
+    border: 2px solid var(--backgroundElevated);
+    text-align: center;
+}
+
+.codeBtn:hover span{
+    /* linear graadient text */
+    background: var(--linear-primary-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.codeBtn span{
+    margin-right: 10px;
+    transition: all 0.5s;
+}
+.videoTitle{
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+.videoDesc{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0.6;
+}
+
+.youtubeStats{
+    background: var(--linear-primary-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ribbons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mdxContainer{
+    margin-top: 20px;
+    background-color: var(--backgroundElevated);
+    border-radius: 4px;
+    padding: 0px 0px 20px 0px;
+}
+
+.shortContainer{
+    aspect-ratio: 9/16;
+    max-width: 100%;
+    height: 80vh;
+    margin: auto auto auto auto;
+}
+
+@media screen and (max-width: 768px) {
+    .ribbons{
+        flex-direction: column;
+    }
+    .ribbons > div{
+        margin: 10px;
+    }
+    .content_detail{
+        height: 100vh;
+    }
+    .mainContainer{
+        padding: 2px;
+    }
+    .reactPlayerContainer{
+        margin-top: 0px;
+        border-radius: 0px;
+    }
+
+    .content_detail{
+        border-radius: 0px;
+    }
+}
+
+/* if height > width then */
+@media screen and (max-height: 768px) {
+    .content_detail{
+        margin-top: 0px !important;
+        height: calc (100vh - 56.25vw - 200px);
+    }
+    .youtubeContainer{
+        margin: 0 auto 0 auto !important;
+    }
 }

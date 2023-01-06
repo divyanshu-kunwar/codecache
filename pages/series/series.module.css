@@ -1,0 +1,128 @@
+.main{
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 2%;
+}
+
+.main2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+    align-items: center;
+}
+
+.seriesInfo{
+    max-width: 360px;
+    min-width: 320px;
+    height: fit-content;
+    margin-right: 20px;
+    padding-bottom: 20px;
+    background-color: var(--backgroundElevated);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+
+.videoGrid{
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    background-color: var(--background);
+}
+
+.videoGrid::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+    background: transparent;
+}
+
+.videoGrid::-webkit-scrollbar-thumb {
+    background: var(--linear-primary);
+}
+
+.videoGrid::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+.seriesInfo__left{
+    display : flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.seriesInfo__left img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.seriesInfo__left h3{
+    margin: 8px 0px 2px 0px;
+    padding-left: 5%;
+}
+
+.seriesInfo__left p{
+    padding: 5%;
+    margin: 0px 0px 10px 0px;
+    opacity: 0.8;
+}
+
+.codeBtn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 20px 10px 30px;
+    border-radius: 8px;
+    background: var(--buttonBackground);
+    color: var(--background);
+    font-weight: bold;
+    border: 2px solid var(--backgroundElevated);
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.codeBtn:hover span{
+    /* linear graadient text */
+    background: var(--linear-primary-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.codeBtn span{
+    margin-right: 10px;
+    transition: all 0.5s;
+}
+
+.statsIconDark{
+    filter: invert(100%);
+}
+
+.stats{
+    width: 100%;
+    margin-top: 20px;
+    padding: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    opacity: 0.8;
+    font-size: small;
+}
+
+.stats:hover{
+    opacity: 1;
+}
+
+.stats img{
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+}

@@ -1,11 +1,11 @@
 .shortsContainer{
-    min-width: 227px;
-    width: 227px;
+    min-width: 207px;
+    max-width: 227px;
 }
 
 .seriesContainer{
-    min-width: 350px;
-    width: 350px !important;
+    min-width: 345px;
+    max-width: 350px;
 }
 
 .seriesContainer , .shortsContainer{
@@ -104,4 +104,13 @@
     object-fit: cover !important;
     width: 100% !important;
     height: 100% !important;
+}
+
+@media only screen and (max-width: 800px) {
+    .seriesContainer{
+        scale: 0.9;
+    }
+    .seriesContainer:hover {
+        scale: 0.95;
+    }
 }

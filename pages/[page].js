@@ -127,18 +127,6 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main style={{ overflowY: "hidden" }}>
-        {/* <Image
-          src={bg}
-          alt="bg"
-          style={{
-            width: "100%",
-            opacity: "0.2",
-            objectFit: "contain",
-            objectPosition: "top",
-            position: "absolute",
-            zIndex: "-2",
-          }}
-        /> */}
 
         <div className={styles.dashboardContainer}>
           <div>
@@ -155,9 +143,6 @@ export default function Home(props) {
               setTheme={setTheme}
               sideExpanded={sideExpanded}
             />
-
-            {/* {console.log(props.data)} */}
-
           {
             props.data.id==='home' && 
             <DashHome

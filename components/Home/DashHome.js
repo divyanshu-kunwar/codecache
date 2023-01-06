@@ -1,6 +1,5 @@
 import Hero from "./Hero/Hero";
 import styles from "./home.module.css";
-import Image from "next/image";
 
 import VideoContainer from "./VideoContainer/VideoContainer";
 

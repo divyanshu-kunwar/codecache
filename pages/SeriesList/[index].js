@@ -8,14 +8,14 @@ import Head from "next/head"
 
 export async function getStaticPaths() {
     return {
-      paths: [{ params: { videoId: 'home'} }],
+      paths: [{ params: { index: 'home'} }],
       fallback: 'blocking',     // can also be true or 'blocking'
     }
   }
 
 export async function getStaticProps(context) {
     return {
-        props: { videoid: context.params.videoId },
+        props: { seriesId: context.params.index },
     };
 }
 
@@ -37,7 +37,7 @@ export default function SeriesPage(props) {
       
 
       <Head>
-        <title>{props.videoid}</title>
+        <title>{props.seriesId}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="some description here" />
         <link

@@ -107,9 +107,6 @@ export default function SeriesPage(props) {
             />
 
             {/* videos series goes here */}
-
-            { console.log(props.series)}
-
             <div className={styles_.main}>
               <h2>{props.series.title}</h2>
               <div className={styles_.main2}>
@@ -173,7 +170,7 @@ export default function SeriesPage(props) {
                         Title={video.title}
                         Playtime={video.playtime}
                       />
-                    );
+                    )
                   })}
                 </div>
               </div>
